@@ -50,5 +50,8 @@ function fasd_cd {
 #
 
 # Changes the current working directory interactively.
-alias j='fasd_cd -i'
+alias z='fasd_cd -i'
+alias v='fasd -e vim'
+alias m='fasd -e mplayer'
+alias o='fasd -a -e xdg-open'
 
