@@ -194,5 +194,6 @@ alias ac='sudo apt-fast clean'
 alias ad='sudo apt-fast update'
 alias adg='sudo apt-fast update && sudo apt-fast upgrade'
 alias agd='sudo apt-fast upgrade'
+alias ash='apt-cache show'
 
 alias esiee='sudo service transmission-daemon stop ; sudo service nzbget stop ; sudo service couchpotato stop ; sudo service tor stop ; sudo service i2p stop ; sudo service nginx stop'
