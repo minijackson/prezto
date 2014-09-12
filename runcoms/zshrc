@@ -11,4 +11,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+source ~/.zaw/zaw.zsh
+source ~/.opp/opp.zsh
+source ~/.opp/opp/*.zsh
 
+bindkey "OA" history-search-backward
+bindkey "OB" history-search-forward
+bindkey "[A" history-search-backward
+bindkey "[B" history-search-forward

@@ -23,24 +23,44 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'syntax-highlighting' \
-  'prompt' \
-  'tmux' \
-  'command-not-found' \
-  'git' \
-  'gpg' \
-  'fasd' \
-  'dpkg' \
-  'ssh'
+if [[ $TERM != "linux" ]] ; then
+	zstyle ':prezto:load' pmodule \
+		'environment' \
+		'terminal' \
+		'editor' \
+		'history' \
+		'directory' \
+		'spectrum' \
+		'utility' \
+		'completion' \
+		'syntax-highlighting' \
+		'prompt' \
+		'tmux' \
+		'command-not-found' \
+		'git' \
+		'gpg' \
+		'fasd' \
+		'dpkg' \
+		'ssh'
+else
+	zstyle ':prezto:load' pmodule \
+		'environment' \
+		'terminal' \
+		'editor' \
+		'history' \
+		'directory' \
+		'spectrum' \
+		'utility' \
+		'completion' \
+		'syntax-highlighting' \
+		'prompt' \
+		'command-not-found' \
+		'git' \
+		'gpg' \
+		'fasd' \
+		'dpkg' \
+		'ssh'
+fi
 
 #
 # Editor

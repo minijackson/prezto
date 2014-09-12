@@ -26,9 +26,7 @@ if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]] && ( \
   # Create a 'prezto' session if no session has been defined in tmux.conf.
   if ! tmux has-session 2> /dev/null; then
     tmux_session='prezto'
-	local -a tmux_options
-	[[ $TERM = "linux" ]] && tmux_options="-2" || tmux_options=""
-    tmux $tmux_options \
+    tmux -2 \
       new-session -d -s "$tmux_session" \; \
       set-option -t "$tmux_session" destroy-unattached off &> /dev/null
   fi
