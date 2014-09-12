@@ -7,3 +7,9 @@
 [submodule "modules/completion/external"]
 	path = modules/completion/external
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "zaw"]
+	path = zaw
+	url = git://github.com/zsh-users/zaw.git
+[submodule "opp"]
+	path = opp
+	url = https://github.com/hchbaw/opp.zsh.git
