@@ -19,3 +19,6 @@ bindkey "OA" history-search-backward
 bindkey "OB" history-search-forward
 bindkey "[A" history-search-backward
 bindkey "[B" history-search-forward
+
+# GDBmgr vim plugin
+export LD_LIBRARY_PATH="~/.vim/bundle/gdbmgr/gdbmgr/src:default"
