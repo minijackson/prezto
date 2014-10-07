@@ -196,4 +196,26 @@ alias adg='sudo apt-fast update && sudo apt-fast upgrade'
 alias agd='sudo apt-fast upgrade'
 alias ash='apt-cache show'
 
-alias esiee='sudo service transmission-daemon stop ; sudo service nzbget stop ; sudo service couchpotato stop ; sudo service tor stop ; sudo service i2p stop ; sudo service nginx stop'
+#alias esiee='sudo service transmission-daemon stop ; sudo service nzbget stop ; sudo service couchpotato stop ; sudo service tor stop ; sudo service i2p stop ; sudo service nginx stop'
+
+function esiee () {
+	sudo -- sh -c "service transmission-daemon stop ; service nzbget stop ; service couchpotato stop ; service tor stop ; service i2p stop ; service nginx stop"
+	if [[ ! "$1" == "" ]] ; then
+		if [[ "$1" == "-l" ]] ; then
+			curl 'https://controller.mobile.lan/portal_degraded.php' --cookie-jar /tmp/ucopia > /dev/null
+			if [ $(curl 'https://controller.mobile.lan/portal_degraded.php' --referer 'https://controller.mobile.lan/portal_degraded.php' --cookie /tmp/ucopia --data 'action=authenticate&secure_pwd=&login=guest&password=guest&valid=' | grep -q maximum) ] ; then
+				echo "Guest account failed, switching back to default one"
+				if [ $(curl 'https://controller.mobile.lan/portal_degraded.php' --referer 'https://controller.mobile.lan/portal_degraded.php' --cookie /tmp/ucopia --data 'action=authenticate&secure_pwd=&login=nicoler&password=2n-=moLwS&valid=' | grep -q incorrect) ] ; then
+					echo -n "\x1b[31mInvalid password\x1b[39m\n" > /dev/stderr
+				else
+					echo "Logged as nicoler"
+				fi
+			else
+				echo "Logged as guest"
+			fi
+		else
+			echo "Usage : $0 [-l]"
+			return 1
+		fi
+	fi
+}
