@@ -36,12 +36,13 @@ source "$cache_file"
 
 unset cache_file init_args
 
-function fasd_cd {
-  local fasd_ret="$(fasd -d "$@")"
-  if [[ -d "$fasd_ret" ]]; then
-    cd "$fasd_ret"
+fasd_cd() {
+  if [ $# -le 1 ]; then
+    fasd "$@"
   else
-    print "$fasd_ret"
+    local _fasd_ret="$(fasd -e 'printf %s' "$@")"
+    [ -z "$_fasd_ret" ] && return
+    [ -d "$_fasd_ret" ] && cd "$_fasd_ret" || printf %s\\n "$_fasd_ret"
   fi
 }
 
@@ -50,8 +51,8 @@ function fasd_cd {
 #
 
 # Changes the current working directory interactively.
-alias z='fasd_cd'
-alias v='fasd -e vim'
-alias m='fasd -e mplayer'
+alias z='fasd_cd -d'
+alias v='fasd -fe vim'
+alias m='fasd -fe mplayer'
 alias o='fasd -a -e xdg-open'
 
