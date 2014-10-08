@@ -54,12 +54,15 @@ if zstyle -t ':prezto:environment:termcap' color; then
 	# export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
 	# export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
 	# export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
-	export LESS_TERMCAP_mb=$'\E[0;34m'
-	export LESS_TERMCAP_md=$'\E[0;34m'
+	# export LESS_TERMCAP_mb=$'\E[0;34m'
+	export LESS_TERMCAP_mb=$'\E[38;5;68m'
+	# export LESS_TERMCAP_md=$'\E[0;34m'
+	export LESS_TERMCAP_md=$'\E[38;5;68m'
 	export LESS_TERMCAP_me=$'\E[0m'
 	export LESS_TERMCAP_se=$'\E[0m'
 	export LESS_TERMCAP_so=$'\E[01;44;33m'
 	export LESS_TERMCAP_ue=$'\E[0m'
-	export LESS_TERMCAP_us=$'\E[0;35m'
+	# export LESS_TERMCAP_us=$'\E[0;35m'
+	export LESS_TERMCAP_us=$'\E[38;5;149m'
 fi
 
