@@ -55,4 +55,4 @@ alias z='fasd_cd -d'
 alias v='fasd -fe vim'
 alias m='fasd -fe mplayer'
 alias o='fasd -a -e xdg-open'
-
+alias j='fasd_cd -i'

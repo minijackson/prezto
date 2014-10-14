@@ -65,4 +65,3 @@ if zstyle -t ':prezto:environment:termcap' color; then
 	# export LESS_TERMCAP_us=$'\E[0;35m'
 	export LESS_TERMCAP_us=$'\E[38;5;149m'
 fi
-
