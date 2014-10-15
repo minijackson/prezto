@@ -41,7 +41,8 @@ if [[ $TERM != "linux" ]] ; then
 		'gpg' \
 		'fasd' \
 		'dpkg' \
-		'ssh'
+		'ssh' \
+		'dwim'
 else
 	zstyle ':prezto:load' pmodule \
 		'environment' \
@@ -59,7 +60,8 @@ else
 		'gpg' \
 		'fasd' \
 		'dpkg' \
-		'ssh'
+		'ssh' \
+		'dwim'
 fi
 
 #
