@@ -66,9 +66,9 @@ if is-callable 'dircolors'; then
 
   if zstyle -t ':prezto:module:utility:ls' color; then
     if [[ -s "$HOME/.dir_colors" ]]; then
-      eval "$(dircolors "$HOME/.dir_colors")"
+      eval "$(dircolors --sh "$HOME/.dir_colors")"
     else
-      eval "$(dircolors)"
+      eval "$(dircolors --sh)"
     fi
 
     alias ls="$aliases[ls] --color=auto"
@@ -212,12 +212,7 @@ function esiee () {
 		if [[ "$1" == "-l" ]] ; then
 			curl 'https://controller.mobile.lan/portal_degraded.php' --cookie-jar /tmp/ucopia > /dev/null
 			if [ $(curl 'https://controller.mobile.lan/portal_degraded.php' --referer 'https://controller.mobile.lan/portal_degraded.php' --cookie /tmp/ucopia --data 'action=authenticate&secure_pwd=&login=guest&password=guest&valid=' | grep -q maximum) ] ; then
-				echo "Guest account failed, switching back to default one"
-				if [ $(curl 'https://controller.mobile.lan/portal_degraded.php' --referer 'https://controller.mobile.lan/portal_degraded.php' --cookie /tmp/ucopia --data 'action=authenticate&secure_pwd=&login=nicoler&password=2n-=moLwS&valid=' | grep -q incorrect) ] ; then
-					echo -n "\x1b[31mInvalid password\x1b[39m\n" > /dev/stderr
-				else
-					echo "Logged as nicoler"
-				fi
+				echo "Guest account failed"
 			else
 				echo "Logged as guest"
 			fi
