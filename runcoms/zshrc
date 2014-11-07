@@ -14,6 +14,7 @@ fi
 source ~/.zprezto/zaw/zaw.zsh
 source ~/.zprezto/opp/opp.zsh
 source ~/.zprezto/opp/opp/*.zsh
+[ -f ~/.zprezto/fzf.zsh ] && source ~/.zprezto/fzf.zsh
 
 bindkey "OA" history-search-backward
 bindkey "OB" history-search-forward
@@ -21,4 +22,5 @@ bindkey "[A" history-search-backward
 bindkey "[B" history-search-forward
 
 # GDBmgr vim plugin
-export LD_LIBRARY_PATH="~/.vim/bundle/gdbmgr/gdbmgr/src:default"
+export LD_LIBRARY_PATH="$HOME/.vim/bundle/gdbmgr/gdbmgr/src:default"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

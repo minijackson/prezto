@@ -16,3 +16,6 @@
 [submodule "modules/dwim"]
 	path = modules/dwim
 	url = https://github.com/oknowton/zsh-dwim.git
+[submodule "fzf"]
+	path = fzf
+	url = https://github.com/junegunn/fzf.git
