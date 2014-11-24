@@ -207,6 +207,10 @@ alias ash='apt-cache show'
 alias vim="vim --servername VIM"
 alias gogole=google
 
+function gi() {
+	curl -L -s https://www.gitignore.io/api/\$@ ;
+}
+
 function esiee () {
 	sudo -- sh -c "service transmission-daemon stop ; service nzbget stop ; service couchpotato stop ; service tor stop ; service i2p stop ; service nginx stop"
 	if [[ ! "$1" == "" ]] ; then
