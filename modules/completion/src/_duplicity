@@ -1,0 +1,125 @@
+#compdef duplicity
+#autoload
+
+local -a duplicity_options duplicity_keywords
+
+duplicity_keywords=(
+	"full"
+	"incr"
+	"verify"
+	"list-current-files"
+	"collection-status"
+	"restore"
+	"remove-older-than"
+	"remove-all-but-n-full"
+	"remove-all-inc-of-but-n-full"
+	"cleanup"
+)
+
+duplicity_options=(
+	"--allow-source-mismatch"
+	"--archive-directory:Dir:_dirs"
+	"--asynchronous-upload[Perform file uploads asynchronously (experimental)]"
+	"--cf-backend[Allows the explicit selection of a cloudfiles backend]:Backend:((pyrax cloudfiles))"
+	"--dry-run"
+	"--encrypt-key:Key ID:"
+	"--encrypt-secret-keyring[Changes the path to the secret keyring for the encrypt key]::filename:_files"
+	"--encrypt-sign-key:Key ID:"
+	"--exclude:Shell pattern:"
+	"--exclude-devices-files"
+	"--exclude-filelist:File containing the filenames:_files"
+	"--exclude-filelist-stdin"
+	"--exclude-globbing-filelist:File containing the filenames:_files"
+	"--exclude-if-present:File:_files"
+	"--exclude-other-filesystems"
+	"--exclude-regexp:regexp:"
+	"--ftp-passive"
+	"--progress"
+)
+
+_duplicity_commands() {
+	local -a duplicity_commands
+	duplicity_commands=(
+		"full:Perform a full backup"
+		"incr:Perform an incremential backup"
+		"verify:Compare the backup contents with the source folder"
+		"list-current-files:Lists the files contained in the most current backup or backup at time"
+		"collection-status:Summarize the status of the backup repository"
+		"restore:Restore files"
+		"remove-older-than:Delete all backup sets older than the given time"
+		"remove-all-but-n-full:Delete all backups sets that are older than the Nth last full backup"
+		"remove-all-inc-of-but-n-full:Delete incremental sets of all backups sets that are older than the Nth last full backup"
+		"cleanup:Delete the extraneous duplicity files on the given backend"
+	)
+
+	_arguments ':Duplicity command:(($duplicity_commands))'
+}
+
+_duplicity_urls() {
+	_urls
+}
+
+_duplicity_time() {
+	_arguments ":Time:((now))"
+}
+
+_duplicity_full() {
+	_arguments $duplicity_options ':Directory to backup:_dirs' ':URL:_duplicity_urls'
+}
+
+_duplicity_incr() {
+	_arguments $duplicity_options "--full-if-older-than[Perform a full backup if the previous backup is older than the given time]:Time:_duplicity_time" \
+									':Directory to backup:_dirs' ':URL:_duplicity_urls'
+}
+
+_duplicity_verify() {
+	_arguments $duplicity_options "--compare-data[Enable data comparison]" \
+									{--time,-t-,--restore-time}"[Select a backup to verify against]:Time:_duplicity_time" \
+									"--file-to-restore[Restrict verify to that file or folder]:File or directory:_files" \
+									":URL:_duplicity_urls" ":Destination:_dirs"
+}
+
+_duplicity_collection-status() {
+	_arguments $duplicity_options ":URL:_duplicity_urls"
+}
+
+_duplicity_list-current-files() {
+	_arguments $duplicity_options ""{--time,-t-,--restore-time}"[Select a backup to list against]:Time:_duplicity_time" \
+									":URL:_duplicity_urls"
+}
+
+_duplicity_restore() {
+	_arguments $duplicity_options "--file-to-restore[Restrict verify to that file or folder]:File or directory:_files" \
+									""{--time,-t-,--restore-time}"[Select a backup to verify against]:Time:_duplicity_time" \
+									":URL:_duplicity_urls" ":Target folder:_dirs"
+}
+
+_duplicity_remove-older-than() {
+	_arguments $duplicity_options ":Time:_duplicity_time" "--force[Delete files instead of listing them]" ":URL:_duplicity_urls"
+}
+
+_duplicity_remove-all-but-n-full() {
+	_arguments $duplicity_options ":Count:" "--force[Delete files instead of listing them]" ":URL:_duplicity_urls"
+}
+
+_duplicity_remove-all-inc-of-but-n-full() {
+	_arguments $duplicity_options ":Count:" "--force[Delete files instead of listing them]" ":URL:_duplicity_urls"
+}
+
+_duplicity_cleanup() {
+	_arguments $duplicity_options "--force[Delete files instead of listing them]" \
+									"--extra-clean[Be more aggressive about saving space]" \
+									":URL:_duplicity_urls"
+}
+
+if (( CURRENT > 2 )) ; then
+	local subcmd=${words[2]}
+	curcontext="${curcontext%:*:*}:duplicity-$subcmd"
+	(( CURRENT-- ))
+	shift words
+	_call_function ret _duplicity_$subcmd
+	return ret
+	exit
+else
+	_duplicity_commands
+fi

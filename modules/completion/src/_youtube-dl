@@ -1,0 +1,176 @@
+#compdef youtube-dl
+
+local -a ydl_options
+
+ydl_options=(
+	{-h,--help}"[Print help and exit]"
+	"--version"
+	{-U,--update}"[Update the program to latest version]"
+	{-i,--ignore-errors}"[Continue on download errors]"
+	"--abort-on-error"
+	"--dump-user-agent"
+	"--user-agent:User agent:->ydlua"
+	"--referer:Referer URL:_urls"
+	"--add-header[Add a custom HTTP header]:HTTP header:->httpheader"
+	"--list-extractors"
+	"--extractor-descriptions"
+	"--proxy:Proxy URL:_urls"
+	"--no-check-certificate"
+	"--prefer-insecure"
+	"--cache_dir:Cache directory:_dirs"
+	"--no-cache-dir"
+	"--socket-timeout:Timeout time:->number"
+	"--bidi-workaround[Work around terminals that lack bidirectional text support]"
+	"--default-search[Use this prefix for unqualified URLs]:Prefix:"
+	"--ignore-config"
+	"--encoding:Encoding:->encoding"
+	"--playlist-start:Number:->number"
+	"--playlist-end:Number:->number"
+	"--match-title[Download only matching titles]:RegEx:"
+	"--reject-title:RegEx:"
+	"--max-downloads:Number:->number"
+	"--min-filesize:Size:->bytes"
+	"--max-filesize:Size:->bytes"
+	"--date[Download only videos uploaded in this date]:Date:"
+	"--datebefore[Download only videos uploaded before this date]:Date:"
+	"--dateafter[Download only videos uploaded after this date]:Date:"
+	"--min-views:Count:->number"
+	"--max-views:Count:->number"
+	"--no-playlist"
+	"--age-limit[Download only video suitable for the this age]:Age:->number"
+	"--download-archive[Download only videos not listed in the archive file]:Archive file:_files"
+	"--include-ads"
+	"--youtube-include-dash-manifest"
+	{-r,--rate-limit}"[Maximum download rate]:Download rate:->bytes"
+	{-R,--retries}"[Number of retries]:Number:->number"
+	"--buffer-size:Size:->bytes"
+	"--no-resize-buffer[Do not automaticlly resize the buffer]"
+	{-t,--title}"[Use title in file name]"
+	"--id[Only use video ID in file name]"
+	{-A,--auto-number}"[Number downladed files]"
+	{-o,--output}"[Output file name template]:File name template:->template"
+	"--autonumber-size:Number size:->number"
+	"--restrict-filenames[Restrict file names to ASCI only]"
+	{-a,--batch-file}"[File containing URLs to download]:File:_files"
+	"--load-info[JSON file containing the video information]:JSON file:_files"
+	{-w,--no-overwrites}"[Do not overwrite files]"
+	{-c,--continue}"[Force continue partially downloaded files]"
+	"--no-continue"
+	"--cookies:Cookies file:_files"
+	"--no-part[Do not use .part files]"
+	"--no-mtime[Do not use the Last-modified header to set the file modification time]"
+	"--write-description[Write the video description in a .description file]"
+	"--write-info-json"
+	"--write-annotations[Write annotations in a .annotations file]"
+	"--write-thumbail"
+	{-q,--quiet}"[Activate quiet mode]"
+	"--no-warnings"
+	{-s,--simulate}"[Do not download the video and do not write anything to disk]"
+	"--skip-download"
+	{-g,--get-url}"[Simulate, quiet but print URL]"
+	{-e,--get-title}"[Simulate, quiet but print title]"
+	"--get-id" "--get-thumbail" "--get-description" "--get-duration"
+	"--get-filename" "--get-format"
+	{-j,--dump-json}"[Simulate, quiet but print JSON information]"
+	"--newline[Output progress bar as new lines]"
+	"--no-progress"
+	"--console-title[Display progress in console titlebar]"
+	{-v,--verbose}"[Print various debugging informations]"
+	"--dump-intermediate-pages"
+	"--write-pages[Write downloaded intermediary pages in the current directory]"
+	"--print-traffic"
+	"-f[format]:Format:->format"
+	"--all-formats[Download all available video formats]"
+	"--prefer-free-formats"
+	"--max-quality:Format:->format"
+	{-F,--list-formats}"[List all available formats]"
+	"--write-sub" "--write-auto-sub[Write automatic subtitle file (youtube only)]"
+	"--all-subs" "--list-subs" "--sub-format:Subtitle format:->subform"
+	"--sub-lang:Subtitle language:->sublang"
+	{-u,--username}"[Account username]:Username:"
+	{-p,--password}"[Account password]:Password:"
+	{-n,--netrc}"[Use .netrc authentification data]"
+	"--video-password:Password:"
+	{-x,--extract-audio}"[Convert video files to audio-only files]"
+	"--audio-format:Audio format:->audioformat"
+	"--audio-quality:avconv audio quality specification:->digit"
+	"--recode-video:Video format:->videoformat"
+	{-k,--keep-video}"[Kep the video on file disk after post-processing]"
+	"--embed-subs" "--embed-thumbail[Embed the thumbail in the audio as cover art]"
+	"--add-metadata"
+	"--xattrs[Write metadata to the video's xattrs]"
+	"--prefer-avconv" "--prefer-ffmpeg"
+)
+
+_arguments $ydl_options ":Video/Playlist URL:_urls"
+
+case "$state" in
+	format)
+		local -a ydlformats
+		ydlformats=("best" "bestvideo" "bestaudio" "worst" "worstvideo" "worstaudio")
+		_describe "Format" ydlformats
+		_values -s / 'Video format code' 17 18 19 20 21 22;;
+	ydlua)
+		local -a useragents
+		useragents=(
+			"Mozilla/5.0 (X11; Linux x86_64; rv\:10.0) Gecko/20100101 Firefox/10.0 (Chrome):Firefox 10 on Linux 64 bit (default)"
+			"Mozilla/5.0 (X11; Linux x86_64; rv\:30.0) Gecko/20100101 Firefox/30.0 (Chrome):Firefox 30 on Linux 64 bit"
+			"Mozilla/5.0 (Windows NT 6.2; rv\:30.0) Gecko/20100101 Firefox/30.0:Firefox 30 on Windows 8 32 bit"
+			"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.4 (KHTML like Gecko) Chrome/22.0.1229.56 Safari/537.4:Chrome 22 on Linux 64 bit"
+			"Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36:Chrome 32 on Windows 8 64 bit"
+			"facebookscraper/1.0( http\://www.facebook.com/sharescraper_help.php):Facebook scraper 1.0"
+			"Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; InfoPath.3; rv\:11.0) like Gecko:MSIE 11 on Windows 8 WOW64"
+		)
+		_describe "User agent" useragents;;
+	httpheader)
+		local -a httpheaderfield
+		httpheaderfield=(
+			"Accept" "Accept-Charset" "Accept-Encoding" "Accept-Language" "Accept-Datetime"
+			"Authorization" "Cache-Control" "Connection" "Cookie" "Content-Length" "Content-MD5"
+			"Content-Type" "Date" "Expect" "From" "Host" "If-Match" "If-Modified-Since"
+			"If-None-Match" "If-Range" "If-Unmodified-Since" "Max-Forwards" "Origin"
+			"Pragma" "Proxy-Authorization" "Range" "TE" "Upgrade" "Via" "Warning"
+		)
+		#_combination -s ":" "HTTP header" "field-value" "field=one" "one";;
+		_describe "HTTP header field:value" httpheaderfield;;
+	encoding)
+		local -a encodingoptions
+		encodingoptions=("UTF-8" "ISO-8859-15")
+		_describe "Encoding" encodingoptions;;
+	number)
+		_values -s "" "Number" {0..9};;
+	digit)
+		local -a digits
+		digits=({0..9})
+		_describe "Digit" digits;;
+	bytes)
+		local -a units
+		units=(
+			"k" "m" "g"
+		)
+		_describe "Unit" units;;
+	subform)
+		local -a subform
+		subform=(
+			"srt" "sub" "sbv" "vtt"
+		)
+		_describe "Subtitle format" subform;;
+	sublang)
+		local -a sublang
+		sublang=(
+			"en" "fr" "es" "nl" "pt" "ru" "de"
+		)
+		_values -s "," "Subtitle language" $sublang;;
+	audioformat)
+		local -a audioformats
+		audioformats=(
+			"best" "aac" "vorbis" "mp3" "m4a" "opus" "wav"
+		)
+		_describe "Audio format" audioformats;;
+	videoformat)
+		local -a videoformats
+		videoformats=(
+			"mp4" "flv" "ogg" "webm" "mkv"
+		)
+		_describe "Video format" videoformats;;
+esac
