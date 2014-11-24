@@ -11,10 +11,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-source ~/.zprezto/zaw/zaw.zsh
-source ~/.zprezto/opp/opp.zsh
-source ~/.zprezto/opp/opp/*.zsh
-[ -f ~/.zprezto/fzf.zsh ] && source ~/.zprezto/fzf.zsh
+
+# Additional submodules
+[ -f ~/.zprezto/modules/zaw/zaw.zsh ] && source ~/.zprezto/modules/zaw/zaw.zsh
+[ -f ~/.zprezto/modules/opp/opp.zsh ] && source ~/.zprezto/modules/opp/opp.zsh
+[ -f ~/.zprezto/modules/opp/opp.zsh ] && source ~/.zprezto/modules/opp/opp/*.zsh
+[ -f ~/.zprezto/modules/fzf.zsh ] && source ~/.zprezto/modules/fzf.zsh
 
 bindkey "OA" history-search-backward
 bindkey "OB" history-search-forward
@@ -23,4 +25,3 @@ bindkey "[B" history-search-forward
 
 # GDBmgr vim plugin
 export LD_LIBRARY_PATH="$HOME/.vim/bundle/gdbmgr/gdbmgr/src:default"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
