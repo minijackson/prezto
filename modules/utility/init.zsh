@@ -205,6 +205,7 @@ alias agd="sudo $packman upgrade"
 alias ash='apt-cache show'
 
 alias vim="vim --servername VIM"
+alias gogole=google
 
 function esiee () {
 	sudo -- sh -c "service transmission-daemon stop ; service nzbget stop ; service couchpotato stop ; service tor stop ; service i2p stop ; service nginx stop"
