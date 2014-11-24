@@ -8,14 +8,14 @@
 	path = modules/completion/external
 	url = https://github.com/zsh-users/zsh-completions.git
 [submodule "zaw"]
-	path = zaw
+	path = modules/zaw
 	url = git://github.com/zsh-users/zaw.git
 [submodule "opp"]
-	path = opp
+	path = modules/opp
 	url = https://github.com/hchbaw/opp.zsh.git
 [submodule "modules/dwim"]
 	path = modules/dwim
 	url = https://github.com/oknowton/zsh-dwim.git
 [submodule "fzf"]
-	path = fzf
+	path = modules/fzf
 	url = https://github.com/junegunn/fzf.git

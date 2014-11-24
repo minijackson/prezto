@@ -2,13 +2,13 @@
 # ------------------
 unalias fzf 2> /dev/null
 fzf() {
-  /usr/bin/ruby --disable-gems "$HOME/.zprezto/fzf/fzf" "$@"
+  /usr/bin/ruby --disable-gems "$HOME/.zprezto/modules/fzf/fzf" "$@"
 }
 export -f fzf > /dev/null
 
 # Auto-completion
 # ---------------
-[[ $- =~ i ]] && source "$HOME/.zprezto/fzf/fzf-completion.zsh"
+[[ $- =~ i ]] && source "$HOME/.zprezto/modules/fzf/fzf-completion.zsh"
 
 # Key bindings
 # ------------
@@ -35,7 +35,7 @@ if [ -n "$TMUX_PANE" -a ${FZF_TMUX:-1} -ne 0 -a ${LINES:-40} -gt 15 ]; then
     else
       height="-l $height"
     fi
-    tmux split-window $height "zsh -c 'source ~/.zprezto/fzf.zsh; tmux send-keys -t $TMUX_PANE \"\$(__fsel)\"'"
+    tmux split-window $height "zsh -c 'source ~/.zprezto/modules/fzf.zsh; tmux send-keys -t $TMUX_PANE \"\$(__fsel)\"'"
   }
 else
   fzf-file-widget() {
