@@ -208,7 +208,7 @@ alias vim="vim --servername VIM"
 alias gogole=google
 
 function gi() {
-	curl -L -s https://www.gitignore.io/api/\$@ ;
+	wget -O- -q https://www.gitignore.io/api/$@ ;
 }
 
 function esiee () {
