@@ -204,7 +204,7 @@ alias adg="sudo $packman update && sudo $packman upgrade"
 alias agd="sudo $packman upgrade"
 alias ash='apt-cache show'
 
-alias vim="vim --servername VIM"
+(vim --version | grep +clientserver -q) && alias vim="vim --servername VIM"
 alias gogole=google
 
 function gi() {
