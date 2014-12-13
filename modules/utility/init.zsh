@@ -192,6 +192,10 @@ function psu {
   ps -U "${1:-$USER}" -o 'pid,%cpu,%mem,command' "${(@)argv[2,-1]}"
 }
 
+if (( $+commands[ack-grep] )); then
+	alias ack=ack-grep
+fi
+
 #
 # Apt
 #
