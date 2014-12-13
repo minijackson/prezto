@@ -28,3 +28,6 @@
 [submodule "fzf"]
 	path = modules/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "modules/dircolors-solarized"]
+	path = modules/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
