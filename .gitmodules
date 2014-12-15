@@ -38,3 +38,7 @@
 	path = modules/fzf
 	url = https://github.com/junegunn/fzf.git
 	branch = master
+[submodule "modules/dircolors-solarized"]
+	path = modules/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
+	branch = master
