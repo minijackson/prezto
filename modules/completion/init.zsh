@@ -76,6 +76,11 @@ zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # Directories
+
+# ls colors
+[ -f ~/.zprezto/modules/dircolors-solarized/dircolors.256dark ] && eval $(dircolors ~/.zprezto/modules/dircolors-solarized/dircolors.256dark)
+
+zmodload zsh/complist
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select

@@ -26,8 +26,5 @@ bindkey "OB" history-search-forward
 bindkey "[A" history-search-backward
 bindkey "[B" history-search-forward
 
-# ls colors
-[ -f ~/.zprezto/modules/dircolors-solarized/dircolors.256dark ] && eval $(dircolors ~/.zprezto/modules/dircolors-solarized/dircolors.256dark)
-
 # GDBmgr vim plugin
 export LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$HOME/.vim/bundle/gdbmgr/gdbmgr/src:default"
