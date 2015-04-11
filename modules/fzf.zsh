@@ -8,7 +8,7 @@ export -f fzf > /dev/null
 
 # Auto-completion
 # ---------------
-[[ $- =~ i ]] && source "$HOME/.zprezto/modules/fzf/fzf-completion.zsh"
+# [[ $- =~ i ]] && source "$HOME/.zprezto/modules/fzf/fzf-completion.zsh"
 
 # Key bindings
 # ------------
