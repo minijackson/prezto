@@ -42,3 +42,7 @@
 	path = modules/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 	branch = master
+[submodule "modules/scd"]
+	path = modules/scd
+	url = https://github.com/minijackson/scd.git
+	branch = master
