@@ -118,7 +118,7 @@ case "$state" in
 			"Mozilla/5.0 (Windows NT 6.2; rv\:30.0) Gecko/20100101 Firefox/30.0:Firefox 30 on Windows 8 32 bit"
 			"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.4 (KHTML like Gecko) Chrome/22.0.1229.56 Safari/537.4:Chrome 22 on Linux 64 bit"
 			"Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36:Chrome 32 on Windows 8 64 bit"
-			"facebookscraper/1.0( http\://www.facebook.com/sharescraper_help.php):Facebook scraper 1.0"
+			"facebookscraper/1.0 (http\://www.facebook.com/sharescraper_help.php):Facebook scraper 1.0"
 			"Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; InfoPath.3; rv\:11.0) like Gecko:MSIE 11 on Windows 8 WOW64"
 		)
 		_describe "User agent" useragents;;
