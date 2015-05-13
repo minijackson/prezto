@@ -26,5 +26,13 @@ bindkey "OB" history-search-forward
 bindkey "[A" history-search-backward
 bindkey "[B" history-search-forward
 
+giveAFuck() {
+	BUFFER="fuck"
+	zle accept-line
+}
+
+zle -N giveAFuck
+bindkey "" "giveAFuck"
+
 # GDBmgr vim plugin
 export LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$HOME/.vim/bundle/gdbmgr/gdbmgr/src:default"
