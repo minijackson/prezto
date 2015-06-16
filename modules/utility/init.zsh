@@ -226,6 +226,8 @@ alias fuck='$(thefuck $(fc -ln -1))'
 (vim --version | grep +clientserver -q) && alias vim="vim --servername VIM"
 alias gogole=google
 
+alias bpython="/usr/lib/python-exec/python3.4/bpython"
+
 function gi() {
 	wget -O- -q https://www.gitignore.io/api/$@ ;
 }

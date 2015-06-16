@@ -46,3 +46,7 @@
 	path = modules/scd
 	url = https://github.com/minijackson/scd.git
 	branch = master
+[submodule "modules/k"]
+	path = modules/k
+	url = https://github.com/supercrabtree/k.git
+	branch = master

@@ -20,6 +20,7 @@ fi
 [ -f ~/.zprezto/modules/opp/opp.zsh ] && source ~/.zprezto/modules/opp/opp.zsh
 [ -f ~/.zprezto/modules/opp/opp.zsh ] && source ~/.zprezto/modules/opp/opp/*.zsh
 [ -f ~/.zprezto/modules/fzf.zsh ] && source ~/.zprezto/modules/fzf.zsh
+[ -f ~/.zprezto/modules/k/k.sh ] && source ~/.zprezto/modules/k/k.sh
 
 bindkey "OA" history-search-backward
 bindkey "OB" history-search-forward
