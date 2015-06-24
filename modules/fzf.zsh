@@ -2,7 +2,7 @@
 # ------------------
 unalias fzf 2> /dev/null
 fzf() {
-  /usr/bin/ruby --disable-gems "$HOME/.zprezto/modules/fzf/fzf" "$@"
+  /usr/bin/ruby "$HOME/.zprezto/modules/fzf/fzf" "$@"
 }
 export -f fzf > /dev/null
 
