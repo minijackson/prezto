@@ -34,6 +34,3 @@ giveAFuck() {
 
 zle -N giveAFuck
 bindkey "" "giveAFuck"
-
-# GDBmgr vim plugin
-export LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib:$HOME/.vim/bundle/gdbmgr/gdbmgr/src:default"

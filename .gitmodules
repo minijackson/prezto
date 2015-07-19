@@ -50,3 +50,6 @@
 	path = modules/k
 	url = https://github.com/supercrabtree/k.git
 	branch = master
+[submodule "modules/completion/jrnl-completion"]
+	path = modules/completion/jrnl-completion
+	url = https://github.com/mvoelske/jrnl-zsh-completion.git
