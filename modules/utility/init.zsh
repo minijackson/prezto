@@ -25,6 +25,7 @@ alias ebuild='nocorrect ebuild'
 alias gcc='nocorrect gcc'
 alias gist='nocorrect gist'
 alias grep='nocorrect grep'
+alias fgrep='nocorrect fgrep'
 alias heroku='nocorrect heroku'
 alias ln='nocorrect ln'
 alias man='nocorrect man'
@@ -44,6 +45,7 @@ alias rake='noglob rake'
 alias rsync='noglob rsync'
 alias scp='noglob scp'
 alias sftp='noglob sftp'
+alias eix='noglob eix'
 
 # Define general aliases.
 alias _='sudo'
@@ -108,6 +110,7 @@ if zstyle -t ':prezto:module:utility:grep' color; then
   export GREP_COLORS="mt=$GREP_COLOR" # GNU.
 
   alias grep="${aliases[grep]:-grep} --color=auto"
+  alias fgrep="${aliases[fgrep]:-fgrep} --color=auto"
 fi
 
 # Mac OS X Everywhere

@@ -53,3 +53,4 @@
 [submodule "modules/completion/jrnl-completion"]
 	path = modules/completion/jrnl-completion
 	url = https://github.com/mvoelske/jrnl-zsh-completion.git
+	branch = master
