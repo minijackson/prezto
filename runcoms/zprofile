@@ -5,6 +5,10 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+if [ -r "~/.profile" ]; then
+	source "~/.profile"
+fi
+
 #
 # Browser
 #
@@ -31,7 +35,7 @@ export BROWSER='firefox'
 #
 
 if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
+  export LANG='fr_FR.UTF-8@euro'
 fi
 
 #

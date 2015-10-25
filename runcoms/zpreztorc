@@ -12,6 +12,9 @@
 # Set case-sensitivity for completion, history lookup, etc.
 # zstyle ':prezto:*:*' case-sensitive 'yes'
 
+# Rehash when failing to find the executable.
+zstyle ':completion:*' rehash true
+
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 
@@ -35,6 +38,7 @@ if [[ $TERM != "linux" ]] ; then
 		'utility' \
 		'completion' \
 		'syntax-highlighting' \
+		'history-substring-search' \
 		'prompt' \
 		'tmux' \
 		'command-not-found' \
@@ -42,6 +46,7 @@ if [[ $TERM != "linux" ]] ; then
 		'gpg' \
 		'fasd' \
 		'dpkg' \
+		'pacman' \
 		'ssh' \
 		'dwim' \
 		'scd'
@@ -56,12 +61,14 @@ else
 		'utility' \
 		'completion' \
 		'syntax-highlighting' \
+		'history-substring-search' \
 		'prompt' \
 		'command-not-found' \
 		'git' \
 		'gpg' \
 		'fasd' \
 		'dpkg' \
+		'pacman' \
 		'ssh' \
 		'dwim' \
 		'scd'
@@ -163,6 +170,12 @@ zstyle ':prezto:module:syntax-highlighting' styles \
   'builtin' 'bg=blue' \
   'command' 'bg=blue' \
   'function' 'bg=blue'
+
+# ============
+# == Pacman ==
+# ============
+
+zstyle ':prezto:module:pacman' frontend 'yaourt'
 
 #
 # Terminal
