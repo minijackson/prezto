@@ -192,7 +192,11 @@ zstyle ':prezto:module:terminal:window-title' format '%m: %s'
 # zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Set the terminal multiplexer title format.
-zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
+if [ -z "$SSH_TTY" ] ; then
+	zstyle ':prezto:module:terminal:multiplexer-title' format "%s"
+else
+	zstyle ':prezto:module:terminal:multiplexer-title' format "%m"
+fi
 
 #
 # Tmux
