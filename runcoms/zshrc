@@ -22,10 +22,15 @@ fi
 [ -f ~/.zprezto/modules/fzf.zsh ] && source ~/.zprezto/modules/fzf.zsh
 [ -f ~/.zprezto/modules/k/k.sh ] && source ~/.zprezto/modules/k/k.sh
 
-bindkey "OA" history-search-backward
-bindkey "OB" history-search-forward
-bindkey "[A" history-search-backward
-bindkey "[B" history-search-forward
+#bindkey "OA" history-search-backward
+#bindkey "OB" history-search-forward
+#bindkey "[A" history-search-backward
+#bindkey "[B" history-search-forward
+
+bindkey "OA" history-substring-search-up
+bindkey "OB" history-substring-search-down
+bindkey "[A" history-substring-search-up
+bindkey "[B" history-substring-search-down
 
 giveAFuck() {
 	BUFFER="fuck"
