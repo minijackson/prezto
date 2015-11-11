@@ -207,6 +207,13 @@ if (( $+commands[ack-grep] )); then
 fi
 
 #
+# Global aliases
+#
+alias -g P="|& p"
+alias -g G="|& grep"
+alias -g FG="|& fgrep"
+
+#
 # Apt
 #
 if (( $+commands[apt-fast] )); then
