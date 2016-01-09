@@ -47,6 +47,7 @@ if [[ $TERM != "linux" ]] ; then
 		'fasd' \
 		'dpkg' \
 		'pacman' \
+		'archive' \
 		'ssh' \
 		'dwim' \
 		'bookmarks' \
@@ -70,6 +71,7 @@ else
 		'fasd' \
 		'dpkg' \
 		'pacman' \
+		'archive' \
 		'ssh' \
 		'dwim' \
 		'bookmarks' \

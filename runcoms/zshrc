@@ -6,7 +6,7 @@
 #
 
 export PATH="$HOME/.linuxbrew/bin:$HOME/.local/bin:$PATH"
-export MANPATH="$HOME/.local/share/man:$HOME/.local/man:/usr/local/man:/usr/local/share/man:/usr/share/man"
+export MANPATH="$HOME/.local/share/man:$HOME/.local/man:$(manpath 2> /dev/null)"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
