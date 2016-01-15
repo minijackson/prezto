@@ -1,0 +1,23 @@
+#compdef bookmark
+
+local -a _bookmark_options
+# (- :) ⇒ Stop completion after this option (thx _git)
+_bookmark_options=(
+	"(- :)-a[Add a bookmark]:New bookmark name"
+	"(- :)-d[Delete a bookmark]:Bookmark name:->_bookmark_name"
+	"(- :)"{-h,--help}"[Display help message]"
+)
+
+_arguments $_bookmark_options
+
+case "$state" in
+	_bookmark_name)
+
+		local -a bookmarks=()
+		for link in $MARKPATH/*(N@); do
+			bookmarks+=("${link:t}:Bookmark for ${link:A}")
+		done
+
+		_describe "Bookmark name" bookmarks
+		;;
+esac

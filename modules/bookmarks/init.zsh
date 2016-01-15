@@ -13,12 +13,14 @@
 
 # Minijackson's edits:
 # - Removing zsh version check
-# - Adapting MARKPATH
-# - Adding a MARKPREFIX to customize the name directory's prefix
+# - Adapted MARKPATH
+# - Added a MARKPREFIX to customize the name directory's prefix
 # - Added some quoting to prevent word splitting (thanks shellcheck)
-# - Wrapping the bookmark reloading in a function
+# - Wrapped the bookmark reloading in a function
 # - Some variables that should be local
 # - Remove/add the bookmarks in the hash table when editing with the `bookmark` function
+# - Changing command behavior (add help, -a to add, -d to delete)
+# - Added completion definition (/modules/completion/src/_bookmark)
 
 MARKPATH=${MARKPATH:-"$HOME/.zsh-bookmarks"}
 MARKPREFIX=${MARKPREFIX:-"-"}
@@ -43,6 +45,7 @@ zle -N vbe-insert-bookmark
 bindkey '@@' vbe-insert-bookmark
 
 # Manage bookmarks
+# Completion in the the completion module (modules/completsion/src/_bookmark)
 bookmark() {
 	[[ -d "$MARKPATH" ]] || mkdir -p "$MARKPATH"
 
@@ -57,24 +60,33 @@ bookmark() {
 		done
 	else
 
+		# Save argument count before parsing
+		local argc=$#
+
 		# Otherwise, we may want to add a bookmark or delete an
 		# existing one.
-		local -a delete
-		zparseopts -D d=delete
+		local -a help add delete
+		zparseopts -D h=help -help=help a=add d=delete
 
-		if (( $+delete[1] )); then
-			# With `-d`, we delete an existing bookmark
-			command rm "$MARKPATH/$1"
-			unhash -d -- "$MARKPREFIX$1"
+		if (( (argc != 2 && argc != 0) || $+help[1])); then
+			echo "Usage: $0 [-a <bookmark name>|-d <bookmark name>]"
 		else
-			# Otherwise, add a bookmark to the current
-			# directory. The first argument is the bookmark
-			# name. `.` is special and means the bookmark should
-			# be named after the current directory.
-			local name=$1
-			[[ $name == "." ]] && name=${PWD:t}
-			ln -s "$PWD" "$MARKPATH/$name"
-			hash -d -- "$MARKPREFIX$name=$PWD"
+			if (( $+delete[1] )); then
+				# With `-d`, we delete an existing bookmark
+				command rm "$MARKPATH/$1"
+				unhash -d -- "$MARKPREFIX$1"
+			elif (( $+add[1] )); then
+				# Otherwise, add a bookmark to the current
+				# directory. The first argument is the bookmark
+				# name. `.` is special and means the bookmark should
+				# be named after the current directory.
+				local name=$1
+				[[ $name == "." ]] && name=${PWD:t}
+				ln -s "$PWD" "$MARKPATH/$name"
+				hash -d -- "$MARKPREFIX$name=$PWD"
+			else
+				echo "Usage: $0 [-a <bookmark name>|-d <bookmark name>]"
+			fi
 		fi
 
 	fi
