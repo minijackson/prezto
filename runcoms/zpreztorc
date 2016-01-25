@@ -27,7 +27,7 @@ zstyle ':prezto:load' zfunction 'zmv'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-if [[ $TERM != "linux" ]] ; then
+if [[ $TERM != "linux" && $UID != 0 ]] ; then
 	zstyle ':prezto:load' pmodule \
 		'environment' \
 		'terminal' \
