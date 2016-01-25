@@ -190,16 +190,28 @@ zstyle ':prezto:module:terminal' auto-title 'always'
 
 # Set the window title format.
 # zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
-zstyle ':prezto:module:terminal:window-title' format '%m: %~'
+if [[ $UID != 0 ]]; then
+	zstyle ':prezto:module:terminal:window-title' format '%m: %~'
+else
+	zstyle ':prezto:module:terminal:window-title' format '%m #: %~'
+fi
 
 # Set the tab title format.
 # zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Set the terminal multiplexer title format.
-if [ -z "$SSH_TTY" ] ; then
-	zstyle ':prezto:module:terminal:multiplexer-title' format "%s"
+if [[ $UID != 0 ]]; then
+	if [ -z "$SSH_TTY" ] ; then
+		zstyle ':prezto:module:terminal:multiplexer-title' format "%s"
+	else
+		zstyle ':prezto:module:terminal:multiplexer-title' format "%m"
+	fi
 else
-	zstyle ':prezto:module:terminal:multiplexer-title' format "%m"
+	if [ -z "$SSH_TTY" ] ; then
+		zstyle ':prezto:module:terminal:multiplexer-title' format "%s #"
+	else
+		zstyle ':prezto:module:terminal:multiplexer-title' format "%m #"
+	fi
 fi
 
 #
