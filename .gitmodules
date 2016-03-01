@@ -24,7 +24,7 @@
 	branch = master
 [submodule "zaw"]
 	path = modules/zaw
-	url = git://github.com/zsh-users/zaw.git
+	url = https://github.com/zsh-users/zaw.git
 	branch = master
 [submodule "opp"]
 	path = modules/opp
