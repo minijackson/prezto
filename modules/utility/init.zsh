@@ -246,8 +246,8 @@ function esiee () {
 	sudo -- sh -c "service transmission-daemon stop ; service nzbget stop ; service couchpotato stop ; service tor stop ; service i2p stop ; service nginx stop"
 	if [[ ! "$1" == "" ]] ; then
 		if [[ "$1" == "-l" ]] ; then
-			curl 'https://controller.mobile.lan/portal_degraded.php' --cookie-jar /tmp/ucopia > /dev/null
-			if [ $(curl 'https://controller.mobile.lan/portal_degraded.php' --referer 'https://controller.mobile.lan/portal_degraded.php' --cookie /tmp/ucopia --data 'action=authenticate&secure_pwd=&login=guest&password=guest&valid=' | grep -q maximum) ] ; then
+			curl 'https://controller.access.network/portal_degraded.php' --cookie-jar /tmp/ucopia > /dev/null
+			if [ $(curl 'https://controller.access.network/portal_degraded.php' --referer 'https://controller.access.network/portal_degraded.php' --cookie /tmp/ucopia --data 'action=authenticate&secure_pwd=&login=guest&password=guest&valid=' | grep -q maximum) ] ; then
 				echo "Guest account failed"
 			else
 				echo "Logged as guest"
