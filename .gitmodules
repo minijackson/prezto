@@ -54,3 +54,7 @@
 	path = modules/completion/jrnl-completion
 	url = https://github.com/mvoelske/jrnl-zsh-completion.git
 	branch = master
+[submodule "modules/autosuggestions/external"]
+	path = modules/autosuggestions/external
+	url = https://github.com/tarruda/zsh-autosuggestions
+	branch = master
