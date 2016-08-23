@@ -31,6 +31,12 @@ export PAGER='less'
 export BROWSER='firefox'
 
 #
+# Term
+#
+
+export TERM="screen-256color"
+
+#
 # Language
 #
 
