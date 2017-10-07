@@ -5,8 +5,8 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-if [ -r "~/.profile" ]; then
-	source "~/.profile"
+if [ -r ~/.profile ]; then
+	source ~/.profile
 fi
 
 #
@@ -34,7 +34,19 @@ export BROWSER='firefox'
 # Term
 #
 
-export TERM="screen-256color"
+if [[ "$TERM" != "linux" ]]; then
+	#if infocmp "screen-256color-it" > /dev/null 2>&1; then
+	#	export TERM="screen-256color-it"
+	#	alias ssh="TERM=screen-256color ssh"
+	#else
+		export TERM="tmux-256color"
+	#fi
+fi
+#[[ "$TERM" != "linux" ]] && export TERM="xterm-256color"
+# Cursor shape and color
+[[ "$TERM" != "linux" ]] && printf "\e]12;grey\x7\e[1 q"
+[[ "$TERM" == "linux" ]] && source ~/.zprezto/modules/tty-colors/init.zsh
+[[ "$TERM" == "linux" && -f /usr/share/consolefonts/ter-d22n.psf.gz ]] && setfont /usr/share/consolefonts/ter-d22n.psf.gz
 
 #
 # Language
@@ -94,4 +106,4 @@ if [[ ! -d "$TMPDIR" ]]; then
   mkdir -p -m 700 "$TMPDIR"
 fi
 
-TMPPREFIX="${TMPDIR%/}/zsh"
+# vim:ft=zsh

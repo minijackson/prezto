@@ -8,12 +8,12 @@
 export PATH="$HOME/.linuxbrew/bin:$HOME/.local/bin:$PATH"
 export MANPATH="$HOME/.local/share/man:$HOME/.local/man:$(manpath 2> /dev/null)"
 
+fpath+=~/.zfunc
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
-unsetopt autonamedirs
 
 # Customize to your needs...
 
@@ -21,7 +21,8 @@ unsetopt autonamedirs
 [ -f ~/.zprezto/modules/zaw/zaw.zsh ] && source ~/.zprezto/modules/zaw/zaw.zsh
 [ -f ~/.zprezto/modules/opp/opp.zsh ] && source ~/.zprezto/modules/opp/opp.zsh
 [ -f ~/.zprezto/modules/opp/opp.zsh ] && source ~/.zprezto/modules/opp/opp/*.zsh
-[ -f ~/.zprezto/modules/fzf.zsh ] && source ~/.zprezto/modules/fzf.zsh
+#[ -f ~/.zprezto/modules/fzf.zsh ] && source ~/.zprezto/modules/fzf.zsh
+[ -f /usr/share/zsh/site-contrib/fzf.zsh ] && source /usr/share/zsh/site-contrib/fzf.zsh
 [ -f ~/.zprezto/modules/k/k.sh ] && source ~/.zprezto/modules/k/k.sh
 
 #bindkey "OA" history-search-backward
@@ -34,10 +35,12 @@ bindkey "OB" history-substring-search-down
 bindkey "[A" history-substring-search-up
 bindkey "[B" history-substring-search-down
 
-giveAFuck() {
-	BUFFER="fuck"
-	zle accept-line
-}
+alias khal="LANG=en_US.UTF-8 khal"
+alias ikhal="LANG=en_US.UTF-8 ikhal"
 
-zle -N giveAFuck
-bindkey "" "giveAFuck"
+REPORTTIME=5
+
+TMPPREFIX="${TMPDIR%/}/zsh"
+
+setopt PROMPT_SP
+unsetopt AUTO_NAME_DIRS

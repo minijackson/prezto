@@ -210,8 +210,14 @@ fi
 # Global aliases
 #
 alias -g P="|& p"
-alias -g G="|& grep"
-alias -g FG="|& fgrep"
+
+if (( $+commands[rg] )); then
+	alias -g G="|& rg"
+	alias -g FG="|& rg -F"
+else
+	alias -g G="|& grep"
+	alias -g FG="|& grep -F"
+fi
 
 #
 # Apt
@@ -232,6 +238,8 @@ alias agd="sudo $packman upgrade"
 alias ash='apt-cache show'
 
 alias fuck='$(thefuck $(fc -ln -1))'
+
+alias please="just --justfile ~/.config/justfile --working-directory ."
 
 (vim --version | grep +clientserver -q) && alias vim="vim --servername VIM"
 alias gogole=google

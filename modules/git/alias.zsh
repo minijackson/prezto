@@ -29,7 +29,7 @@ zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_subm
 # Git
 alias g='git'
 
-alias gcd='cd $(git-root)'
+alias gcd='cd "$(git-root)"'
 alias ge='git exec'
 
 # Branch (b)
