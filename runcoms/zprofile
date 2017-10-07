@@ -65,7 +65,7 @@ typeset -gU cdpath fpath mailpath path
 # Prevent waiting when pressing <Esc> key
 typeset KEYTIMEOUT=1
 
-# Set the the list of directories that cd searches.
+# Set the list of directories that cd searches.
 # cdpath=(
 #   $cdpath
 # )

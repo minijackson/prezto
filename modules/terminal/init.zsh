@@ -49,7 +49,7 @@ function _terminal-set-titles-with-command {
     local -A jobtexts_from_parent_shell
     jobtexts_from_parent_shell=(${(kv)jobtexts})
 
-    jobs "$job_name" 2>/dev/null > >(
+    jobs "$job_name" 2> /dev/null > >(
       read index discarded
       # The index is already surrounded by brackets: [1].
       _terminal-set-titles-with-command "${(e):-\$jobtexts_from_parent_shell$index}"
@@ -75,11 +75,11 @@ function _terminal-set-titles-with-path {
 
   local absolute_path="${${1:a}:-$PWD}"
   local abbreviated_path="${absolute_path/#$HOME/~}"
-  #local truncated_path="${abbreviated_path/(#m)?(#c15,)/...${MATCH[-12,-1]}}"
+  local truncated_path="${abbreviated_path/(#m)?(#c15,)/...${MATCH[-12,-1]}}"
 
   # Refresh and use sorin-style path
-  prompt_sorin_pwd
-  local truncated_path="$_prompt_sorin_pwd"
+  #prompt_sorin_pwd
+  #local truncated_path="$_prompt_sorin_pwd"
   unset MATCH
 
   if [[ "$TERM" == screen* ]]; then
