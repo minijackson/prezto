@@ -37,6 +37,7 @@ bindkey "[B" history-substring-search-down
 
 alias khal="LANG=en_US.UTF-8 khal"
 alias ikhal="LANG=en_US.UTF-8 ikhal"
+alias gcd='cd $(git-root)'
 
 REPORTTIME=5
 
