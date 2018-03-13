@@ -39,7 +39,7 @@ if [[ "$TERM" != "linux" ]]; then
 	#	export TERM="screen-256color-it"
 	#	alias ssh="TERM=screen-256color ssh"
 	#else
-		export TERM="tmux-256color"
+		#export TERM="tmux-256color"
 	#fi
 fi
 #[[ "$TERM" != "linux" ]] && export TERM="xterm-256color"
@@ -85,7 +85,8 @@ path=(
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
 export LESSCHARSET='utf-8'
-export LESS='-F -g -i -M -R -w -X -z-4 -r'
+#export LESS='-F -g -i -M -R -w -X -z-4 -r'
+export LESS='-F -g -i -M -R -w -X -z-4'
 # Disable sgr escape sequences
 export GROFF_NO_SGR=1
 
