@@ -18,6 +18,9 @@ zstyle ':completion:*' rehash true
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
 
+# Add additional directories to load prezto modules from
+# zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
 
@@ -102,9 +105,6 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
 # zstyle ':prezto:module:editor' dot-expansion 'yes'
-
-# Allow the zsh prompt context to be shown.
-#zstyle ':prezto:module:editor' ps-context 'yes'
 
 #
 # Git
